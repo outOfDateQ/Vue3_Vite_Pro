@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>使用Vite</h1>
+    <h1>配置项目</h1>
   </div>
 </template>
 
