@@ -4,22 +4,22 @@
 export const constantRoutes = [
   {
     path: '/',
-    redirect: '/login'
+    redirect: '/login',
   },
   {
     path: '/login',
     component: () => import('@/views/Login/index.vue'),
-    name: 'login'
+    name: 'login',
   },
   {
     path: '/home',
     component: () => import('@/views/Home/index.vue'),
-    name: 'home'
+    name: 'home',
   },
   {
     // path: '/:pathMatch(.*)',
     path: '/:pathMatch(.*)*', // 如果没有匹配的路由跳转到404页面
     component: () => import('@/views/NotFound/index.vue'),
-    name: '404'
-  }
+    name: '404',
+  },
 ]

@@ -6,7 +6,6 @@ export interface LoginForm {
   password: string
 }
 
-
 interface DataType {
   token: string
 }

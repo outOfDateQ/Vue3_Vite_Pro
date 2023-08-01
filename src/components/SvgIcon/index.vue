@@ -1,5 +1,5 @@
 <template>
-  <div style="display: inline-block;">
+  <div style="display: inline-block">
     <!-- 
       使用SVG, 在最外层使用svg标签, 然后里面使用use标签, 必须要配合使用 
       svg标签默认大小是300 * 150, 可以设置svg的css样式改变大小
@@ -24,25 +24,25 @@ defineProps({
   prefix: {
     type: String,
     // 如果不传入的话, 默认值就是#icon
-    default: '#icon'
+    default: '#icon',
   },
   name: {
     type: String,
-    required: true
+    required: true,
   },
   color: {
     type: String,
     // default: '#000'
-    default: ''
+    default: '',
   },
   width: {
     type: String,
-    default: '30'
+    default: '30',
   },
   height: {
     type: String,
-    default: '30'
-  }
+    default: '30',
+  },
 })
 </script>
 

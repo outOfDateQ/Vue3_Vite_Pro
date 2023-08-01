@@ -20,14 +20,14 @@ export default defineConfig(({ command }) => {
       viteMockServe({
         // 保证开发阶段可以使用mock接口
         localEnabled: command === 'serve',
-      })
+      }),
     ],
     // 配置路径别名
     resolve: {
       alias: {
         // 获取到src文件夹的相对路径, path.resolve()示当前文件的路径
-        '@': path.resolve('./src')
-      }
+        '@': path.resolve('./src'),
+      },
     },
     // scss全局变量一个配置
     css: {

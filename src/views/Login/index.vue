@@ -10,15 +10,25 @@
           <el-form>
             <!-- 账号 -->
             <el-form-item>
-              <el-input :prefix-icon="User" v-model="formData.username"></el-input>
+              <el-input
+                :prefix-icon="User"
+                v-model="formData.username"
+              ></el-input>
             </el-form-item>
             <!-- 密码 -->
             <el-form-item>
-              <el-input :prefix-icon="Lock" type="password" v-model="formData.password" show-password></el-input>
+              <el-input
+                :prefix-icon="Lock"
+                type="password"
+                v-model="formData.password"
+                show-password
+              ></el-input>
             </el-form-item>
             <!-- 登录按钮 -->
             <el-form-item>
-              <el-button class="login-btn" type="primary" size="default">登录</el-button>
+              <el-button class="login-btn" type="primary" size="default">
+                登录
+              </el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -34,7 +44,7 @@ import { reactive } from 'vue'
 // 收集表单数据
 const formData = reactive({
   username: 'admin',
-  password: '111111'
+  password: '111111',
 })
 </script>
 
@@ -42,7 +52,7 @@ const formData = reactive({
 .login-container {
   width: 100%;
   height: 100vh;
-  background: url("@/assets/images/background.jpg") no-repeat;
+  background: url('@/assets/images/background.jpg') no-repeat;
   background-size: cover;
 
   .form-container {
@@ -50,7 +60,7 @@ const formData = reactive({
     width: 60%;
     top: 30vh;
     left: 10vw;
-    background: url("@/assets/images/login_form.png") no-repeat;
+    background: url('@/assets/images/login_form.png') no-repeat;
     background-size: cover;
     padding: 40px;
 

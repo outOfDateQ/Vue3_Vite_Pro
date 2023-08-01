@@ -6,7 +6,7 @@ import type { LoginForm, LoginResponseData, UserResponseData } from './type'
 // 定义一个枚举, 用于设置请求地址
 enum API {
   LOGIN_URL = '/user/login',
-  USERINFO_URL = 'user/info'
+  USERINFO_URL = 'user/info',
 }
 
 // 登录请求
@@ -15,7 +15,7 @@ export function login(data: LoginForm) {
   return request<any, LoginResponseData>({
     url: API.LOGIN_URL,
     method: 'POST',
-    data
+    data,
   })
 }
 
@@ -23,6 +23,6 @@ export function login(data: LoginForm) {
 export function getUserInfo() {
   return request<any, UserResponseData>({
     url: API.USERINFO_URL,
-    method: 'GET'
+    method: 'GET',
   })
 }
