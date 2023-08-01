@@ -5,15 +5,8 @@ const app = createApp(App)
 
 app.mount('#app')
 
-const add = () => 
+const add = () => {
+  console.log('测试是否配置成功')
+}
 
-
-{
-  
-  
-  
-  console.log("测试是否配置成功");
-
-};
-
-add();
+add()
