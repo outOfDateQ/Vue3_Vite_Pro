@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h2>主页</h2>
   </div>
 </template>
 
