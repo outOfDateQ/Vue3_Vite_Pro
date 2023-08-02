@@ -1,11 +1,7 @@
 <template>
-  <div>
-    属性管理
-  </div>
+  <div>属性管理</div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss"></style>

@@ -14,8 +14,8 @@ export const constantRoutes = [
       title: '登录',
       // 在菜单中路由是否隐藏
       hidden: true,
-      icon: 'Platform'
-    }
+      icon: 'Platform',
+    },
   },
   {
     path: '/',
@@ -24,7 +24,7 @@ export const constantRoutes = [
     meta: {
       title: '布局',
       hidden: false,
-      icon: 'Management'
+      icon: 'Management',
     },
     // 在父路由上面也可以重定向到子路由
     redirect: '/home',
@@ -36,10 +36,10 @@ export const constantRoutes = [
         meta: {
           title: '首页',
           hidden: false,
-          icon: 'HomeFilled'
-        }
-      }
-    ]
+          icon: 'HomeFilled',
+        },
+      },
+    ],
   },
   {
     path: '/screen',
@@ -48,8 +48,8 @@ export const constantRoutes = [
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon: 'Platform'
-    }
+      icon: 'Platform',
+    },
   },
   {
     path: '/acl',
@@ -58,7 +58,7 @@ export const constantRoutes = [
     meta: {
       title: '权限管理',
       hidden: false,
-      icon: 'HelpFilled'
+      icon: 'HelpFilled',
     },
     children: [
       {
@@ -69,8 +69,8 @@ export const constantRoutes = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon: 'UserFilled'
-        }
+          icon: 'UserFilled',
+        },
       },
       {
         path: '/acl/role',
@@ -79,8 +79,8 @@ export const constantRoutes = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon: 'Promotion'
-        }
+          icon: 'Promotion',
+        },
       },
       {
         path: '/acl/menu',
@@ -89,10 +89,10 @@ export const constantRoutes = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon: 'BellFilled'
-        }
-      }
-    ]
+          icon: 'BellFilled',
+        },
+      },
+    ],
   },
   {
     path: '/product',
@@ -101,7 +101,7 @@ export const constantRoutes = [
     meta: {
       title: '商品管理',
       hidden: false,
-      icon: 'GoodsFilled'
+      icon: 'GoodsFilled',
     },
     children: [
       {
@@ -111,8 +111,8 @@ export const constantRoutes = [
         meta: {
           title: '品牌管理',
           hidden: false,
-          icon: 'Opportunity'
-        }
+          icon: 'Opportunity',
+        },
       },
       {
         path: '/product/attr',
@@ -121,8 +121,8 @@ export const constantRoutes = [
         meta: {
           title: '属性管理',
           hidden: false,
-          icon: 'Management'
-        }
+          icon: 'Management',
+        },
       },
       {
         path: '/product/spu',
@@ -131,8 +131,8 @@ export const constantRoutes = [
         meta: {
           title: 'SPU管理',
           hidden: false,
-          icon: 'Histogram'
-        }
+          icon: 'Histogram',
+        },
       },
       {
         path: '/product/sku',
@@ -141,12 +141,11 @@ export const constantRoutes = [
         meta: {
           title: 'SKU管理',
           hidden: false,
-          icon: 'TrendCharts'
-        }
-      }
-    ]
+          icon: 'TrendCharts',
+        },
+      },
+    ],
   },
-
 
   {
     // path: '/:pathMatch(.*)',
@@ -156,7 +155,7 @@ export const constantRoutes = [
     meta: {
       title: '未找到资源',
       hidden: true,
-      icon: 'Failed'
-    }
+      icon: 'Failed',
+    },
   },
 ]

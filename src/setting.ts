@@ -5,5 +5,5 @@ export default {
   // logo的图标
   logo: '/public/logo.png',
   // logo组件是否隐藏
-  isShow: true
+  isShow: true,
 }

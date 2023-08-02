@@ -11,15 +11,29 @@
           <el-form :model="formData" :rules="rules" ref="loginForm">
             <!-- 账号, prop匹配的是对应的校验规则 -->
             <el-form-item prop="username">
-              <el-input :prefix-icon="User" v-model="formData.username"></el-input>
+              <el-input
+                :prefix-icon="User"
+                v-model="formData.username"
+              ></el-input>
             </el-form-item>
             <!-- 密码 -->
             <el-form-item prop="password">
-              <el-input :prefix-icon="Lock" type="password" v-model="formData.password" show-password></el-input>
+              <el-input
+                :prefix-icon="Lock"
+                type="password"
+                v-model="formData.password"
+                show-password
+              ></el-input>
             </el-form-item>
             <!-- 登录按钮 -->
             <el-form-item>
-              <el-button :loading="isLoading" class="login-btn" type="primary" size="default" @click="login">
+              <el-button
+                :loading="isLoading"
+                class="login-btn"
+                type="primary"
+                size="default"
+                @click="login"
+              >
                 登录
               </el-button>
             </el-form-item>
@@ -91,12 +105,12 @@ const rules = reactive({
     // { required: true, min: 5, max: 10, message: '账号只能在5-10位之间', trigger: 'change' }
 
     // 自定义校验规则, 触发方式还是trigger, 只是校验的规则不是用的配置方式, 而是validator属性, 该属性值是一个函数
-    { trigger: 'change', validator: validatoUserName }
+    { trigger: 'change', validator: validatoUserName },
   ],
   password: [
     // { required: true, min: 6, max: 10, message: '密码只能在6-10位之间', trigger: 'change' }
-    { trigger: 'change', validator: validatoPassword }
-  ]
+    { trigger: 'change', validator: validatoPassword },
+  ],
 })
 
 // 登录
@@ -127,7 +141,7 @@ const login = async () => {
     ElNotification({
       type: 'success',
       title: `Hi, ${getCurrentTime()}好`,
-      message: '欢迎回来'
+      message: '欢迎回来',
     })
   } catch (error) {
     // 请求结束, 失败的时候关闭加载效果
@@ -137,7 +151,7 @@ const login = async () => {
     ElNotification({
       type: 'error',
       // error就是调用async函数返回的失败的结果, 一般都是返回一个错误对象new Error(), 传递的参数就是error实例对象的message属性
-      message: (error as Error).message // 断言error就是Error类型
+      message: (error as Error).message, // 断言error就是Error类型
     })
   }
 }

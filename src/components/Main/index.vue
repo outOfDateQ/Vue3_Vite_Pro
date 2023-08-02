@@ -6,9 +6,7 @@
   </router-view>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .fade-enter-from {
@@ -17,7 +15,7 @@
 }
 
 .fade-enter-active {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
 .fade-enter-to {

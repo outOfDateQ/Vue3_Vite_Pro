@@ -10,9 +10,27 @@
       </el-breadcrumb>
     </div>
     <div class="tabbar-right">
-      <el-button type="primary" icon="Refresh" size="default" color="#28796B" circle></el-button>
-      <el-button type="primary" icon="FullScreen" size="default" color="#28796B" circle></el-button>
-      <el-button type="primary" icon="Setting" size="default" color="#28796B" circle></el-button>
+      <el-button
+        type="primary"
+        icon="Refresh"
+        size="default"
+        color="#28796B"
+        circle
+      ></el-button>
+      <el-button
+        type="primary"
+        icon="FullScreen"
+        size="default"
+        color="#28796B"
+        circle
+      ></el-button>
+      <el-button
+        type="primary"
+        icon="Setting"
+        size="default"
+        color="#28796B"
+        circle
+      ></el-button>
       <img src="/public/logo.png" class="img" />
       <el-dropdown class="el-dropdown-link">
         <span>admin</span>
@@ -26,9 +44,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .tabbar-container {
@@ -55,7 +71,6 @@
     }
 
     :deep .el-breadcrumb {
-
       span,
       i {
         color: #000;

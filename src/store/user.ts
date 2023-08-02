@@ -7,7 +7,7 @@ import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
     // 当页面一刷新, 从本地存储中获取用户token
-    token: GET_TOKEN() // 用户唯一标识
+    token: GET_TOKEN(), // 用户唯一标识
   }),
 
   actions: {
@@ -28,12 +28,10 @@ const useUserStore = defineStore('user', {
         // 失败就返回失败的Promise
         return Promise.reject(new Error(res.data.message))
       }
-    }
+    },
   },
 
-  getters: {
-
-  }
+  getters: {},
 })
 
 export default useUserStore

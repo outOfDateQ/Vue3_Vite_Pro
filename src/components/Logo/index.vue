@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="setting.logo">
+    <img :src="setting.logo" />
     <h2 class="title">{{ setting.title }}</h2>
   </div>
 </template>
@@ -8,7 +8,6 @@
 <script setup lang="ts">
 // @ts-ignore
 import setting from '@/setting'
-
 </script>
 
 <style scoped lang="scss">

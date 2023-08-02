@@ -2,7 +2,11 @@
   <template v-for="route in constantRoutes" :key="route.path">
     <!-- 没有子路由, 只展示一级路由 -->
     <template v-if="!route.children">
-      <el-menu-item :index="route.path" v-if="!route.meta.hidden" @click="handleRoute">
+      <el-menu-item
+        :index="route.path"
+        v-if="!route.meta.hidden"
+        @click="handleRoute"
+      >
         <!-- 在el-menu-item中如果把el-icon放在插槽中的话, 如果el-menu使用collapse, 那么图标会隐藏 -->
         <!-- 使用el-icon可以来设置其内部图片组件的样式和大小, 默认是继承文字颜色和大小 -->
         <el-icon>
@@ -17,8 +21,11 @@
     </template>
     <!-- 有且只有一个子路由, 那么把子路由当作一级路由展示 -->
     <template v-else-if="route.children && route.children.length === 1">
-      <el-menu-item :index="`${route.path}${route.children[0].path}`" v-if="!route.children[0].meta.hidden"
-        @click="handleRoute">
+      <el-menu-item
+        :index="`${route.path}${route.children[0].path}`"
+        v-if="!route.children[0].meta.hidden"
+        @click="handleRoute"
+      >
         <!-- <el-menu-item :index="route.children[0].path" v-if="!route.children[0].meta.hidden" @click="handleRoute"> -->
         <el-icon>
           <component :is="route.children[0].meta.icon"></component>
@@ -58,7 +65,7 @@ const handleRoute = (vc: any) => {
 <!-- 使用递归组件必须要有名字, 但是Vue3中不支持name属性, 因此只能使用Vue2语法 -->
 <script lang="ts">
 export default {
-  name: 'Menu'
+  name: 'Menu',
 }
 </script>
 
