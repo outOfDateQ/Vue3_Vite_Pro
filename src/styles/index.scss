@@ -1,1 +1,19 @@
 @import './reset.scss';
+
+// 设置全局滚动条
+::-webkit-scrollbar {
+  // 滚动条宽度
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  // 滚动条背景
+  background-color: $base-menu-background;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  // 滚动块
+  background-color: burlywood;
+  border-radius: 10px;
+}

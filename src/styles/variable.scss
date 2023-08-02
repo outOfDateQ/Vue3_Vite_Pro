@@ -1,2 +1,20 @@
 // 给项目配置全局scss变量的文件, 前提需要去vite.config.ts文件中去配置
-$base-color: red;
+
+// 左侧菜单的宽度
+$base-menu-width: 260px;
+
+// 左侧菜单的颜色
+$base-menu-background: #001529;
+
+// 顶部导航的高度
+$base-tabbar-height: 50px;
+
+// logo组件的高度
+$base-logo-cpmpo-hieght: 50px;
+
+// logo图片的宽高
+$base-logo-width: 40px;
+$base-logo-height: 40px;
+
+// logo字体的大小
+$base-logo-title: 20px;

@@ -1,8 +1,9 @@
 // 自定义插件, 用来安装多个全局组件, 插件的本质就是一个对象, 因此对外暴露一个插件对象
 
+// 引入element-plus提供的所有图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // 引入需要全局注册的插件
 import SvgIcon from './SvgIcon/index.vue'
-
 // 装各个全局组件的容器对象
 const allGlobalComponent: any = {
   SvgIcon,
@@ -17,5 +18,10 @@ export default {
     Object.keys(allGlobalComponent).forEach((key) => {
       app.component(key, allGlobalComponent[key])
     })
-  },
+
+    // 全局注册所有图标
+    for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+      app.component(key, component)
+    }
+  }
 }

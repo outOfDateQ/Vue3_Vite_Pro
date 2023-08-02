@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from '@/router'
 import ElementPlus from 'element-plus'
@@ -17,6 +18,7 @@ import '@/styles/index.scss'
 import globalComponent from '@/components'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 // 如果配置了环境文件的话, 那么就可以通过import.meta.env来获取到当前环境的数据
 // console.log(import.meta.env)
@@ -26,6 +28,7 @@ const app = createApp(App)
 
 app
   .use(router)
+  .use(pinia)
   .use(globalComponent) // 注册自定义插件
   .use(ElementPlus, {
     locale: zhCn,

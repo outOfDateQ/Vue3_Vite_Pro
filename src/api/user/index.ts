@@ -10,7 +10,7 @@ enum API {
 }
 
 // 登录请求
-export function login(data: LoginForm) {
+export function userLogin(data: LoginForm) {
   // axios函数返回的Promise支持泛型
   return request<any, LoginResponseData>({
     url: API.LOGIN_URL,
