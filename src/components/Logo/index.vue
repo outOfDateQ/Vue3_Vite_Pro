@@ -15,7 +15,7 @@ import setting from '@/setting'
   height: $base-logo-cpmpo-hieght;
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 13px;
 
   img {
     width: $base-logo-width;
@@ -27,6 +27,7 @@ import setting from '@/setting'
     font-weight: bold;
     font-size: $base-logo-title;
     padding-left: 10px;
+    white-space: nowrap;
   }
 }
 </style>

@@ -22,9 +22,9 @@ export const constantRoutes = [
     component: () => import('@/views/Layout/index.vue'),
     name: 'layout',
     meta: {
-      title: '布局',
+      title: '',
       hidden: false,
-      icon: 'Management',
+      icon: '',
     },
     // 在父路由上面也可以重定向到子路由
     redirect: '/home',
@@ -60,6 +60,7 @@ export const constantRoutes = [
       hidden: false,
       icon: 'HelpFilled',
     },
+    redirect: '/acl/user',
     children: [
       {
         path: '/acl/user',
@@ -103,6 +104,7 @@ export const constantRoutes = [
       hidden: false,
       icon: 'GoodsFilled',
     },
+    redirect: '/product/trademark',
     children: [
       {
         path: '/product/trademark',

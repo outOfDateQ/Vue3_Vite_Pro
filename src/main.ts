@@ -17,6 +17,9 @@ import '@/styles/index.scss'
 // 引入自定义插件
 import globalComponent from '@/components'
 
+// 引入路由鉴权文件
+import '@/permisstion'
+
 const app = createApp(App)
 const pinia = createPinia()
 

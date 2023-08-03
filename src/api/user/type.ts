@@ -29,6 +29,7 @@ interface User {
 }
 interface UserInfo {
   checkUser: User
+  message?: string
 }
 // 获取用户信息返回结果的数据类型
 export interface UserResponseData {

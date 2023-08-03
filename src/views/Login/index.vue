@@ -11,29 +11,15 @@
           <el-form :model="formData" :rules="rules" ref="loginForm">
             <!-- 账号, prop匹配的是对应的校验规则 -->
             <el-form-item prop="username">
-              <el-input
-                :prefix-icon="User"
-                v-model="formData.username"
-              ></el-input>
+              <el-input :prefix-icon="User" v-model="formData.username"></el-input>
             </el-form-item>
             <!-- 密码 -->
             <el-form-item prop="password">
-              <el-input
-                :prefix-icon="Lock"
-                type="password"
-                v-model="formData.password"
-                show-password
-              ></el-input>
+              <el-input :prefix-icon="Lock" type="password" v-model="formData.password" show-password></el-input>
             </el-form-item>
             <!-- 登录按钮 -->
             <el-form-item>
-              <el-button
-                :loading="isLoading"
-                class="login-btn"
-                type="primary"
-                size="default"
-                @click="login"
-              >
+              <el-button :loading="isLoading" class="login-btn" type="primary" size="default" @click="login">
                 登录
               </el-button>
             </el-form-item>
@@ -48,12 +34,13 @@
 import { User, Lock } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import useUserStore from '@/store/user'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElNotification } from 'element-plus'
 import { getCurrentTime } from '@/utils/time'
 
 const userStore = useUserStore()
 const router = useRouter()
+const route = useRoute()
 
 // 切换加载效果
 const isLoading = ref(false)
@@ -135,7 +122,11 @@ const login = async () => {
     isLoading.value = false
 
     // 跳转到首页
-    router.push('/')
+    if (!route.query.redirect) {
+      router.replace('/')
+    } else {
+      router.replace(route.query.redirect as string)
+    }
 
     // 显示登录成功提示信息
     ElNotification({

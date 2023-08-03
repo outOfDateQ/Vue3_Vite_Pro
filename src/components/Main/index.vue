@@ -1,12 +1,28 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="fade">
-      <component :is="Component"></component>
+      <!-- v-if可以实现组件的销毁 -->
+      <component :is="Component" v-if="flag"></component>
     </transition>
   </router-view>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { watch, ref, nextTick } from 'vue'
+import useLayoutStore from '@/store/layout'
+const layoutStore = useLayoutStore()
+
+const flag = ref(true)
+
+watch(() => layoutStore.refresh, () => {
+  // 每次点击刷新的时候, 都会销毁当前路由组件, 然后等待DOM重新加载完成之后调用nextTIck来重新挂载路由组件
+  flag.value = false
+
+  nextTick(() => {
+    flag.value = true
+  })
+})
+</script>
 
 <style scoped lang="scss">
 .fade-enter-from {
@@ -15,7 +31,7 @@
 }
 
 .fade-enter-active {
-  transition: all 0.5s ease;
+  transition: $base-transition;
 }
 
 .fade-enter-to {

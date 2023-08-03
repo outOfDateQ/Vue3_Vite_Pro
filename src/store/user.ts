@@ -1,13 +1,15 @@
 import { defineStore } from 'pinia'
-import type { LoginForm, LoginResponseData } from '@/api/user/type'
-import { userLogin } from '@/api/user'
+import type { LoginForm, LoginResponseData, UserResponseData } from '@/api/user/type'
+import { userLogin, getUserInfo } from '@/api/user'
 import { UserState } from './type'
-import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 
 const useUserStore = defineStore('user', {
   state: (): UserState => ({
     // 当页面一刷新, 从本地存储中获取用户token
     token: GET_TOKEN(), // 用户唯一标识
+    username: '',
+    avatar: ''
   }),
 
   actions: {
@@ -29,6 +31,30 @@ const useUserStore = defineStore('user', {
         return Promise.reject(new Error(res.data.message))
       }
     },
+
+    // 获取用户信息, 需要携带用户TOKEN
+    async getUser() {
+      let res: UserResponseData = await getUserInfo()
+      if (res.code === 200) {
+        // 如果获取成功, 就把用户的头像和名字存到仓库
+        this.username = res.data.checkUser.username
+        this.avatar = res.data.checkUser.avatar
+        return 'ok'
+      } else {
+        return Promise.reject(new Error(res.data.message))
+      }
+    },
+
+    // 用户退出
+    toLogout() {
+      // 向服务器发送请求
+      // 把仓库关于用户的数据和本地存储关于用户的数据清空
+      // 跳转路由至登录界面
+      this.username = ''
+      this.avatar = ''
+      this.token = ''
+      REMOVE_TOKEN()
+    }
   },
 
   getters: {},

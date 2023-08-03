@@ -1,6 +1,7 @@
 // 二次封装axios
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { GET_TOKEN } from '@/utils/token'
 
 const request = axios.create({
   // 请求地址前缀
@@ -11,6 +12,10 @@ const request = axios.create({
 
 // 请求拦截器
 request.interceptors.request.use((config) => {
+  // 在请求头中携带用户token
+  if (GET_TOKEN()) {
+    config.headers.token = GET_TOKEN()
+  }
   // 返回config, 如果不返回, 请求发不出去, config身上有headers, 可以用来公共的请求头信息
   return config
 })
