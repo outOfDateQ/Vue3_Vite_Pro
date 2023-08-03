@@ -14,14 +14,17 @@ const layoutStore = useLayoutStore()
 
 const flag = ref(true)
 
-watch(() => layoutStore.refresh, () => {
-  // 每次点击刷新的时候, 都会销毁当前路由组件, 然后等待DOM重新加载完成之后调用nextTIck来重新挂载路由组件
-  flag.value = false
+watch(
+  () => layoutStore.refresh,
+  () => {
+    // 每次点击刷新的时候, 都会销毁当前路由组件, 然后等待DOM重新加载完成之后调用nextTIck来重新挂载路由组件
+    flag.value = false
 
-  nextTick(() => {
-    flag.value = true
-  })
-})
+    nextTick(() => {
+      flag.value = true
+    })
+  },
+)
 </script>
 
 <style scoped lang="scss">

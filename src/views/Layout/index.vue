@@ -7,8 +7,14 @@
       <!-- 侧边栏菜单 -->
       <el-scrollbar class="nav-menu">
         <!-- 使用menu组件搭建静态菜单 -->
-        <el-menu :collapse="layoutStore.fold" unique-opened :default-active="route.path" background-color="#001529"
-          text-color="#fff" active-text-color="#28796B">
+        <el-menu
+          :collapse="layoutStore.fold"
+          unique-opened
+          :default-active="route.path"
+          background-color="#001529"
+          text-color="#fff"
+          active-text-color="#28796B"
+        >
           <Menu :constantRoutes="routesStore.constantRoutes" />
         </el-menu>
       </el-scrollbar>
@@ -33,7 +39,6 @@ import Tabbar from '@/components/Tabbar/index.vue'
 import setting from '@/setting'
 import useRoutesStore from '@/store/routes'
 import useLayoutStore from '@/store/layout'
-
 
 const layoutStore = useLayoutStore()
 const routesStore = useRoutesStore()
@@ -84,7 +89,6 @@ const route = useRoute()
     padding: 20px;
     overflow: auto;
     transition: $base-transition;
-
 
     &.fold {
       width: calc(100vw - $base-menu-min-width);

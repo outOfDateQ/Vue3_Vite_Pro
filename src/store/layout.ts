@@ -4,8 +4,8 @@ import { LayoutState } from './type'
 const useLayoutStore = defineStore('layout', {
   state: (): LayoutState => ({
     fold: false,
-    refresh: false
-  })
+    refresh: false,
+  }),
 })
 
 export default useLayoutStore

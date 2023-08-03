@@ -1,5 +1,9 @@
 import { defineStore } from 'pinia'
-import type { LoginForm, LoginResponseData, UserResponseData } from '@/api/user/type'
+import type {
+  LoginForm,
+  LoginResponseData,
+  UserResponseData,
+} from '@/api/user/type'
 import { userLogin, getUserInfo } from '@/api/user'
 import { UserState } from './type'
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
@@ -9,7 +13,7 @@ const useUserStore = defineStore('user', {
     // 当页面一刷新, 从本地存储中获取用户token
     token: GET_TOKEN(), // 用户唯一标识
     username: '',
-    avatar: ''
+    avatar: '',
   }),
 
   actions: {
@@ -54,7 +58,7 @@ const useUserStore = defineStore('user', {
       this.avatar = ''
       this.token = ''
       REMOVE_TOKEN()
-    }
+    },
   },
 
   getters: {},
