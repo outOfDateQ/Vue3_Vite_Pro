@@ -7,12 +7,7 @@
       </el-icon>
       <!-- Vue3中v-if的优先级比v-for的要高, 所以如果需要条件渲染的话, v-for只能和v-show组合使用 -->
       <el-breadcrumb separator-icon="ArrowRight">
-        <el-breadcrumb-item
-          :to="item.path"
-          v-for="(item, index) in route.matched"
-          :key="index"
-          v-show="item.meta.title"
-        >
+        <el-breadcrumb-item :to="item.path" v-for="(item, index) in route.matched" :key="index" v-show="item.meta.title">
           <el-icon>
             <component :is="item.meta.icon" />
           </el-icon>
@@ -21,29 +16,10 @@
       </el-breadcrumb>
     </div>
     <div class="tabbar-right">
-      <el-button
-        type="primary"
-        icon="Refresh"
-        size="default"
-        color="#28796B"
-        circle
-        @click="refresh"
-      ></el-button>
-      <el-button
-        type="primary"
-        icon="FullScreen"
-        size="default"
-        color="#28796B"
-        circle
-        @click="handleFullScreen"
-      ></el-button>
-      <el-button
-        type="primary"
-        icon="Setting"
-        size="default"
-        color="#28796B"
-        circle
-      ></el-button>
+      <el-button type="primary" icon="Refresh" size="default" color="#28796B" circle @click="refresh"></el-button>
+      <el-button type="primary" icon="FullScreen" size="default" color="#28796B" circle
+        @click="handleFullScreen"></el-button>
+      <el-button type="primary" icon="Setting" size="default" color="#28796B" circle></el-button>
       <img :src="userStore.avatar" class="avatar" />
       <el-dropdown class="el-dropdown-link">
         <span>{{ userStore.username }}</span>
@@ -61,6 +37,7 @@
 import useLayoutStore from '@/store/layout'
 import useUserStore from '@/store/user'
 import { useRoute, useRouter } from 'vue-router'
+import { ElNotification } from 'element-plus'
 
 const layoutStore = useLayoutStore()
 const userStore = useUserStore()
@@ -97,14 +74,21 @@ const handleFullScreen = () => {
 }
 
 // 退出登录
-const logout = () => {
-  userStore.toLogout()
-  router.replace({
-    path: '/login',
-    query: {
-      redirect: route.path,
-    },
-  })
+const logout = async () => {
+  try {
+    await userStore.toLogout()
+    router.replace({
+      path: '/login',
+      query: {
+        redirect: route.path,
+      },
+    })
+  } catch (e) {
+    ElNotification({
+      type: 'error',
+      message: (e as Error).message
+    })
+  }
 }
 </script>
 

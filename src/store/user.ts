@@ -2,9 +2,10 @@ import { defineStore } from 'pinia'
 import type {
   LoginForm,
   LoginResponseData,
+  LogoutResponseData,
   UserResponseData,
 } from '@/api/user/type'
-import { userLogin, getUserInfo } from '@/api/user'
+import { userLogin, getUserInfo, userLogout } from '@/api/user'
 import { UserState } from './type'
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 
@@ -23,16 +24,16 @@ const useUserStore = defineStore('user', {
       // 成功code: 200, 失败code: 201
       if (res.code === 200) {
         // 仓库存储不是持久化的, 本质是存在JS对象中
-        this.token = res.data.token as string
+        this.token = res.data
 
         // 把用户token在本地也存一份
-        SET_TOKEN(res.data.token as string)
+        SET_TOKEN(res.data)
 
         // 成功就返回成功的Pormise, 字符串和undefined都可以返回一个成功的Promise
         return 'ok'
       } else {
         // 失败就返回失败的Promise
-        return Promise.reject(new Error(res.data.message))
+        return Promise.reject(new Error(res.data))
       }
     },
 
@@ -41,24 +42,31 @@ const useUserStore = defineStore('user', {
       let res: UserResponseData = await getUserInfo()
       if (res.code === 200) {
         // 如果获取成功, 就把用户的头像和名字存到仓库
-        this.username = res.data.checkUser.username
-        this.avatar = res.data.checkUser.avatar
+        this.username = res.data.name
+        this.avatar = res.data.avatar
+
         return 'ok'
       } else {
-        return Promise.reject(new Error(res.data.message))
+        return Promise.reject(new Error(res.message))
       }
     },
 
     // 用户退出
-    toLogout() {
+    async toLogout() {
       // 向服务器发送请求
       // 把仓库关于用户的数据和本地存储关于用户的数据清空
       // 跳转路由至登录界面
-      this.username = ''
-      this.avatar = ''
-      this.token = ''
-      REMOVE_TOKEN()
-    },
+      let res: LogoutResponseData = await userLogout()
+      if (res.code === 200) {
+        this.username = ''
+        this.avatar = ''
+        this.token = ''
+        REMOVE_TOKEN()
+        return 'ok'
+      } else {
+        return Promise.reject(new Error(res.message))
+      }
+    }
   },
 
   getters: {},

@@ -6,33 +6,49 @@ export interface LoginForm {
   password: string
 }
 
-interface DataType {
-  token?: string
-  message?: string
-}
-// 登录成功服务器返回数据的类型
-export interface LoginResponseData {
+// 所有返回数据的公共类型
+interface PublicResponse {
   code: number
-  data: DataType
+  message: string
+  ok: boolean
 }
 
-interface User {
-  userId: number
-  avatar: string
-  username: string
-  password: string
-  desc: string
-  roles: string[]
-  buttons: string[]
-  routes: string[]
-  token: string
+// interface DataType {
+//   token?: string
+//   message?: string
+// }
+// 登录成功服务器返回数据的类型
+export interface LoginResponseData extends PublicResponse {
+  data: string
 }
-interface UserInfo {
-  checkUser: User
-  message?: string
+
+// 退出登录返回的数据类型
+export interface LogoutResponseData extends PublicResponse {
+  data: any
 }
+
+// interface User {
+//   userId: number
+//   avatar: string
+//   username: string
+//   password: string
+//   desc: string
+//   roles: string[]
+//   buttons: string[]
+//   routes: string[]
+//   token: string
+// }
+// interface UserInfo {
+//   checkUser: User
+//   message?: string
+// }
 // 获取用户信息返回结果的数据类型
-export interface UserResponseData {
-  code: number
-  data: UserInfo
+export interface UserResponseData extends PublicResponse {
+  data: {
+    routes: string[]
+    buttons: string[]
+    roles: string[]
+    name: string
+    avatar: string
+  }
 }

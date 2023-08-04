@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from '@/router'
+import pinia from '@/store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 // @ts-ignore 可以忽略JSON文件没有类型限制的报错问题
@@ -21,7 +22,7 @@ import globalComponent from '@/components'
 import '@/permisstion'
 
 const app = createApp(App)
-const pinia = createPinia()
+// const pinia = createPinia()
 
 // 如果配置了环境文件的话, 那么就可以通过import.meta.env来获取到当前环境的数据
 // console.log(import.meta.env)
@@ -37,3 +38,4 @@ app
     locale: zhCn,
   }) // 全局安装element-plus, 并且使用国际化(中文)
   .mount('#app')
+

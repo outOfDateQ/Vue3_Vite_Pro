@@ -11,29 +11,15 @@
           <el-form :model="formData" :rules="rules" ref="loginForm">
             <!-- 账号, prop匹配的是对应的校验规则 -->
             <el-form-item prop="username">
-              <el-input
-                :prefix-icon="User"
-                v-model="formData.username"
-              ></el-input>
+              <el-input :prefix-icon="User" v-model="formData.username"></el-input>
             </el-form-item>
             <!-- 密码 -->
             <el-form-item prop="password">
-              <el-input
-                :prefix-icon="Lock"
-                type="password"
-                v-model="formData.password"
-                show-password
-              ></el-input>
+              <el-input :prefix-icon="Lock" type="password" v-model="formData.password" show-password></el-input>
             </el-form-item>
             <!-- 登录按钮 -->
             <el-form-item>
-              <el-button
-                :loading="isLoading"
-                class="login-btn"
-                type="primary"
-                size="default"
-                @click="login"
-              >
+              <el-button :loading="isLoading" class="login-btn" type="primary" size="default" @click="login">
                 登录
               </el-button>
             </el-form-item>
@@ -65,7 +51,7 @@ const loginForm = ref()
 // 收集表单数据
 const formData = reactive({
   username: 'admin',
-  password: '111111',
+  password: 'atguigu123',
 })
 
 // 自定义表单校验规则, 三个参数:rule, value, callback
