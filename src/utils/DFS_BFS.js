@@ -1,47 +1,47 @@
 const arr = [
   {
-    id: "JD001",
-    name: "家电",
+    id: 'JD001',
+    name: '家电',
     children: [
       {
-        id: "JD001001",
-        name: "电视机",
+        id: 'JD001001',
+        name: '电视机',
       },
       {
-        id: "JD001002",
-        name: "洗衣机",
+        id: 'JD001002',
+        name: '洗衣机',
       },
     ],
   },
   {
-    id: "DN001",
-    name: "电脑",
+    id: 'DN001',
+    name: '电脑',
   },
   {
-    id: "FZ001",
-    name: "服装",
+    id: 'FZ001',
+    name: '服装',
     children: [
       {
-        id: "FZ001001",
-        name: "外套",
+        id: 'FZ001001',
+        name: '外套',
       },
       {
-        id: "FZ001002",
-        name: "裤子",
+        id: 'FZ001002',
+        name: '裤子',
         children: [
           {
-            id: "FZ00100201",
-            name: "喇叭裤",
+            id: 'FZ00100201',
+            name: '喇叭裤',
           },
           {
-            id: "FZ00100202",
-            name: "直筒裤",
+            id: 'FZ00100202',
+            name: '直筒裤',
           },
         ],
       },
       {
-        id: "FZ001003",
-        name: "袜子",
+        id: 'FZ001003',
+        name: '袜子',
       },
     ],
   },

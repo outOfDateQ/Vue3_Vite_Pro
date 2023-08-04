@@ -44,12 +44,13 @@ export default defineConfig(({ command, mode }) => {
     server: {
       proxy: {
         // 因为env对象可以获取到当前对应环境文件的数据, 所以可以直接使用env.xxx来获取对应和的数据
-        [env.VITE_APP_BASE_API]: { // env.VITE_APP_BASE_API === '/api'
+        [env.VITE_APP_BASE_API]: {
+          // env.VITE_APP_BASE_API === '/api'
           target: env.VITE_SERVE, // 协议+ 域名 + 端口号
           changeOrigin: true, // 是否跨域
           rewrite: (path) => path.replace(/^\/api/, ''), // 重写路径, 只要是以'/api'开头的都会走代理, 且真正发请求的时候会把'/api'变为空
-        }
-      }
-    }
+        },
+      },
+    },
   }
 })

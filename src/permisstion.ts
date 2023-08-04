@@ -28,9 +28,11 @@ router.beforeEach(async (to, from, next) => {
       next('/')
     } else {
       // 其他页面放行, 但是也得判断当前是否有用户信息, 如果没有用户信息, 那么就发请求, 得到用户数据过后在放行, 解决不在首页刷新页面用户信息丢失问题
-      if (userStore.username) { // 如果有用户信息, 直接跳转路由
+      if (userStore.username) {
+        // 如果有用户信息, 直接跳转路由
         next()
-      } else { // 如果没有用户信息, 先发送获取用户信息的请求, 拿到用户数据之后再跳转路由
+      } else {
+        // 如果没有用户信息, 先发送获取用户信息的请求, 拿到用户数据之后再跳转路由
         try {
           await userStore.getUser() // 调用async函数返回的是一个Promise对象
           // 如果请求成功, 且返回的是一个成功的Promise才会执行下面的代码
@@ -42,13 +44,13 @@ router.beforeEach(async (to, from, next) => {
             next({
               path: '/login',
               query: {
-                redirect: to.path
-              }
+                redirect: to.path,
+              },
             })
           } catch (error) {
             ElNotification({
               type: 'error',
-              message: (error as Error).message
+              message: (error as Error).message,
             })
           }
         }
@@ -63,8 +65,8 @@ router.beforeEach(async (to, from, next) => {
       next({
         path: '/login',
         query: {
-          redirect: to.path
-        }
+          redirect: to.path,
+        },
       })
     }
   }

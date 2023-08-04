@@ -66,7 +66,7 @@ const useUserStore = defineStore('user', {
       } else {
         return Promise.reject(new Error(res.message))
       }
-    }
+    },
   },
 
   getters: {},

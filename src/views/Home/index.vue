@@ -1,7 +1,8 @@
 <template>
   <div>
     <h2>主页</h2>
-    <el-input v-model="msg" /> <el-button @click="copy">复制</el-button>
+    <el-input v-model="msg" />
+    <el-button @click="copy">复制</el-button>
   </div>
 </template>
 

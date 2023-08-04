@@ -38,4 +38,3 @@ app
     locale: zhCn,
   }) // 全局安装element-plus, 并且使用国际化(中文)
   .mount('#app')
-
