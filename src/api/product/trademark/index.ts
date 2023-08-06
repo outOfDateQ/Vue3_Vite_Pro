@@ -1,6 +1,10 @@
 // 获取品牌管理的数据
-import request from "@/utils/request"
-import type { TradeMarkParams, TradeMarkResponse, AddOrUpdateTradeMark, } from './type'
+import request from '@/utils/request'
+import type {
+  TradeMarkParams,
+  TradeMarkResponse,
+  AddOrUpdateTradeMark,
+} from './type'
 
 enum API {
   // 获取品牌管理数据的接口
@@ -10,7 +14,7 @@ enum API {
   // 修改一个品牌
   UPDATE_TRADEMARK_URL = '/admin/product/baseTrademark/update',
   // 删除一个品牌
-  DELETE_TRADEMARK = '/admin/product/baseTrademark/remove'
+  DELETE_TRADEMARK = '/admin/product/baseTrademark/remove',
 }
 
 // 获取品牌管理数据
@@ -28,13 +32,14 @@ export function addOrUpdateTrademark(data: AddOrUpdateTradeMark) {
     return request<any, any>({
       url: API.ADD_TRADEMARK_URL,
       method: 'POST',
-      data
+      data,
     })
-  } else { // 表示修改一个品牌
+  } else {
+    // 表示修改一个品牌
     return request<any, any>({
       url: API.UPDATE_TRADEMARK_URL,
       method: 'PUT',
-      data
+      data,
     })
   }
 }
@@ -42,6 +47,6 @@ export function addOrUpdateTrademark(data: AddOrUpdateTradeMark) {
 export function deleteTrademark(id: number) {
   return request<any, any>({
     url: `${API.DELETE_TRADEMARK}/${id}`,
-    method: 'DELETE'
+    method: 'DELETE',
   })
 }

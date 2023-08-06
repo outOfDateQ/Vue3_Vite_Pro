@@ -41,5 +41,5 @@ export interface TradeMarkResponse extends dataType {
 export interface AddOrUpdateTradeMark {
   id?: number
   logoUrl: string
-  tmName: string,
+  tmName: string
 }

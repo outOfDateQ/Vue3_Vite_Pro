@@ -2,13 +2,24 @@
   <div>
     <el-card shadow="hover">
       <!-- 添加品牌按钮 -->
-      <el-button @click="add" type="primary" size="default" icon="Plus" color="#28796B">
+      <el-button
+        @click="add"
+        type="primary"
+        size="default"
+        icon="Plus"
+        color="#28796B"
+      >
         添加品牌
       </el-button>
       <!-- table表格用于展示已有的品牌数据, data表示表格中的数据(必须是一个数组) -->
       <el-table border :data="currentTradeMark.data">
         <!-- el-table-column的label表示每一列列表的标题, prop|property表示列表每一个的数据(也可以使用插槽), type表示每一列的类型(index|selection|expand) -->
-        <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+        <el-table-column
+          label="序号"
+          width="80px"
+          align="center"
+          type="index"
+        ></el-table-column>
         <!-- 使用prop, 是一个字符串, 就表示在table中传入的数组中每一项的一个属性, 最终是以DIV的形式展示出来的, 不灵活, 比如遇到图片就无法展示, 因此推荐使用插槽 -->
         <!-- <el-table-column label="品牌名称" prop="tmName"></el-table-column> -->
         <!-- 使用插槽 -->
@@ -24,14 +35,32 @@
             style="width: 100px; height: 100px"
             :src="row.logoUrl.includes('http://') ? row.logoUrl : `http://${row.logoUrl}`" :zoom-rate="1.2"
             :preview-src-list="srcList" :z-index="99" :initial-index="0" fit="contain" /> -->
-            <img :src="row.logoUrl.includes('http://') ? row.logoUrl : `http://${row.logoUrl}`" class="logo-img">
+            <img
+              :src="
+                row.logoUrl.includes('http://')
+                  ? row.logoUrl
+                  : `http://${row.logoUrl}`
+              "
+              class="logo-img"
+            />
           </template>
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #default="{ row }">
-            <el-button icon="Edit" size="small" type="primary" color="#28796B" @click="update(row)"></el-button>
-            <el-popconfirm :title="`是否删除${row.tmName}?`" width="200px" icon="Delete" icon-color="#F56C6C"
-              @confirm="handleDelete(row.id)">
+            <el-button
+              icon="Edit"
+              size="small"
+              type="primary"
+              color="#28796B"
+              @click="update(row)"
+            ></el-button>
+            <el-popconfirm
+              :title="`是否删除${row.tmName}?`"
+              width="200px"
+              icon="Delete"
+              icon-color="#F56C6C"
+              @confirm="handleDelete(row.id)"
+            >
               <template #reference>
                 <el-button icon="Delete" size="small" type="danger"></el-button>
               </template>
@@ -40,23 +69,48 @@
         </el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination @current-change="handlePageData" @size-change="handlePageSize" :pager-count="5"
-        v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3, 5, 7, 9]" :background="true"
-        layout="prev, pager, next, jumper,->, total, sizes" :total="total" />
+      <el-pagination
+        @current-change="handlePageData"
+        @size-change="handlePageSize"
+        :pager-count="5"
+        v-model:current-page="pageNum"
+        v-model:page-size="pageSize"
+        :page-sizes="[3, 5, 7, 9]"
+        :background="true"
+        layout="prev, pager, next, jumper,->, total, sizes"
+        :total="total"
+      />
     </el-card>
 
     <!-- 新增|修改的时候需要使用的对话框结构 -->
     <el-dialog v-model="dialogFormVisible" :title="title">
       <!-- 注意区分: el-table的数据是 :data, 表单的校验数据是:model, 规则是:rules -->
-      <el-form class="form" ref="uploadForm" :model="tradeMarkData" :rules="rules">
+      <el-form
+        class="form"
+        ref="uploadForm"
+        :model="tradeMarkData"
+        :rules="rules"
+      >
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
-          <el-input placeholder="请输入品牌名称" v-model="tradeMarkData.tmName"></el-input>
+          <el-input
+            placeholder="请输入品牌名称"
+            v-model="tradeMarkData.tmName"
+          ></el-input>
         </el-form-item>
         <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
           <!-- 上传图片重点!!! action表示向服务器上传一张图片, 默认是POST请求, 且需要带上代理服务器的前缀, 例如/api, 不然不走代理 -->
-          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
-            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-            <img v-if="tradeMarkData.logoUrl" :src="tradeMarkData.logoUrl" class="avatar" />
+          <el-upload
+            class="avatar-uploader"
+            action="/api/admin/product/fileUpload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img
+              v-if="tradeMarkData.logoUrl"
+              :src="tradeMarkData.logoUrl"
+              class="avatar"
+            />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>
@@ -73,8 +127,17 @@
 
 <script setup lang="ts" name="TradeMark">
 import { ref, onMounted, reactive, nextTick } from 'vue'
-import { getTrademarkData, addOrUpdateTrademark, deleteTrademark } from '@/api/product/trademark'
-import type { TradeMarkParams, TradeMarkResponse, AddOrUpdateTradeMark, Records } from '@/api/product/trademark/type'
+import {
+  getTrademarkData,
+  addOrUpdateTrademark,
+  deleteTrademark,
+} from '@/api/product/trademark'
+import type {
+  TradeMarkParams,
+  TradeMarkResponse,
+  AddOrUpdateTradeMark,
+  Records,
+} from '@/api/product/trademark/type'
 import { ElMessage, UploadProps } from 'element-plus'
 // @ts-ignore
 import Np from 'nprogress'
@@ -90,12 +153,12 @@ const title = ref('') // dialog的标题
 // 收集需要新增品牌的数据
 const tradeMarkData = reactive<AddOrUpdateTradeMark>({
   logoUrl: '',
-  tmName: ''
+  tmName: '',
 })
 // 约束文件上传的类型
 const imgType = reactive(['png', 'jpg', 'jpeg', 'gif'])
 // 约束文件上传的大小: 4MB
-const imgSize = ref((1024 * 1024) * 4)
+const imgSize = ref(1024 * 1024 * 4)
 // 表单的组件实例
 const uploadForm = ref()
 
@@ -169,7 +232,9 @@ const update = (currentTradeMark: Records) => {
   // 以下三行代码也可以使用Object.assign()实现
   // Object.assign(tradeMarkData, currentTradeMark)
   tradeMarkData.id = currentTradeMark.id
-  tradeMarkData.logoUrl = currentTradeMark.logoUrl.includes('http://') ? currentTradeMark.logoUrl : `http://${currentTradeMark.logoUrl}`
+  tradeMarkData.logoUrl = currentTradeMark.logoUrl.includes('http://')
+    ? currentTradeMark.logoUrl
+    : `http://${currentTradeMark.logoUrl}`
   tradeMarkData.tmName = currentTradeMark.tmName
   // 重置表单验证
   nextTick(() => {
@@ -194,15 +259,16 @@ const confirm = async () => {
     // 显示添加成功的提示信息
     ElMessage({
       type: 'success',
-      message: tradeMarkData.id ? '修改品牌成功' : '添加品牌成功'
+      message: tradeMarkData.id ? '修改品牌成功' : '添加品牌成功',
     })
     // 重新获取全部已经添加了的品牌数据
     await getTrademark({ pageNum: pageNum.value, pageSize: pageSize.value })
-  } else { // 添加|修改失败
+  } else {
+    // 添加|修改失败
     dialogFormVisible.value = false
     ElMessage({
       type: 'error',
-      message: tradeMarkData.id ? '修改品牌失败' : '添加品牌失败'
+      message: tradeMarkData.id ? '修改品牌失败' : '添加品牌失败',
     })
   }
 }
@@ -223,7 +289,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
     // 在组建中可以直接使用element-plus的组件, 因为全局注册了, 但是不在.vue文件中的话, 还需要单独引入一下
     ElMessage({
       type: 'error',
-      message: '上传的图片格式仅支持: JPG|JPEG|PNG|GIF'
+      message: '上传的图片格式仅支持: JPG|JPEG|PNG|GIF',
     })
     return false
   }
@@ -231,7 +297,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
   if (rawFile.size > imgSize.value) {
     ElMessage({
       type: 'error',
-      message: '上传图片的大小不能大于4MB'
+      message: '上传图片的大小不能大于4MB',
     })
     return false
   }
@@ -269,34 +335,33 @@ const validatorLogoUrl = (rule: any, val: any, callback: any) => {
 
 // 表单的校验规则
 const rules = {
-  tmName: [
-    { required: true, trigger: 'blur', validator: validatorTmName }
-  ],
+  tmName: [{ required: true, trigger: 'blur', validator: validatorTmName }],
   // 如果不是表单元素的话, 设置trigger无效
-  logoUrl: [
-    { required: true, validator: validatorLogoUrl }
-  ]
+  logoUrl: [{ required: true, validator: validatorLogoUrl }],
 }
 
 // 气泡确认框确定的回调
 const handleDelete = async (id: number) => {
   let res = await deleteTrademark(id)
-  if (res.code === 200) { // 删除成功
+  if (res.code === 200) {
+    // 删除成功
     // 删除成功重新获取数据
     await getTrademark({
       // 如果当前页的数据在删除之后, 还大于等于1条, 那么就继续留在当前页, 如果小于1条, 就跳转到前一页, 并获取前一页的数据
-      pageNum: currentTradeMark.data.length >= 1 ? pageNum.value : pageNum.value - 1,
-      pageSize: pageSize.value
+      pageNum:
+        currentTradeMark.data.length >= 1 ? pageNum.value : pageNum.value - 1,
+      pageSize: pageSize.value,
     })
 
     ElMessage({
       type: 'success',
-      message: '删除品牌成功'
+      message: '删除品牌成功',
     })
-  } else { // 删除失败
+  } else {
+    // 删除失败
     ElMessage({
       type: 'error',
-      message: '删除品牌失败'
+      message: '删除品牌失败',
     })
   }
 }
