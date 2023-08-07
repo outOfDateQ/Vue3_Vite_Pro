@@ -4,9 +4,11 @@
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // 引入需要全局注册的插件
 import SvgIcon from './SvgIcon/index.vue'
+import Category from './Category/index.vue'
 // 装各个全局组件的容器对象
 const allGlobalComponent: any = {
   SvgIcon,
+  Category
 }
 
 export default {
