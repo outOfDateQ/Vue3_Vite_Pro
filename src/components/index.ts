@@ -8,7 +8,7 @@ import Category from './Category/index.vue'
 // 装各个全局组件的容器对象
 const allGlobalComponent: any = {
   SvgIcon,
-  Category
+  Category,
 }
 
 export default {

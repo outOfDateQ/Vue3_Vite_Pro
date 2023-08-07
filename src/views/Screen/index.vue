@@ -16,22 +16,25 @@ onMounted(() => {
 const createMap = () => {
   let map = new BMapGL.Map('map') // 创建Map实例
   let point = new BMapGL.Point(106, 35)
-  let marker = new BMapGL.Marker(point) // 创建标注   
+  let marker = new BMapGL.Marker(point) // 创建标注
 
   map.addOverlay(marker) // 将标注添加到地图中
   map.centerAndZoom(point, 11) // 初始化地图,设置中心点坐标和地图级别
   map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
 
   marker.addEventListener('click', function () {
-    alert("您点击了标注")
+    alert('您点击了标注')
   })
 
-  var polyline = new BMapGL.Polyline([
-    new BMapGL.Point(116.399, 39.910),
-    new BMapGL.Point(116.405, 39.920),
-    new BMapGL.Point(116.425, 39.900)
-  ], { strokeColor: "blue", strokeWeight: 2, strokeOpacity: 0.5 });
-  map.addOverlay(polyline);
+  var polyline = new BMapGL.Polyline(
+    [
+      new BMapGL.Point(116.399, 39.91),
+      new BMapGL.Point(116.405, 39.92),
+      new BMapGL.Point(116.425, 39.9),
+    ],
+    { strokeColor: 'blue', strokeWeight: 2, strokeOpacity: 0.5 },
+  )
+  map.addOverlay(polyline)
 }
 </script>
 

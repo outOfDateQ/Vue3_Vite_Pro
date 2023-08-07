@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia'
-import { getFirstCategory, getSecondCategory, getThirdCategory, getAttrs } from '@/api/product/attrs'
+import {
+  getFirstCategory,
+  getSecondCategory,
+  getThirdCategory,
+  getAttrs,
+} from '@/api/product/attrs'
 import { CategoryResponse, State } from '@/api/product/attrs/type'
 
 const useCategoryStore = defineStore('category', {
@@ -12,7 +17,7 @@ const useCategoryStore = defineStore('category', {
     thirdCategory: [],
     firstId: '', // 一级分类的ID(当前选中的数据)
     secondId: '', // 二级分类的ID(当前选中的数据)
-    thirdId: '' // 三级分类的ID(当前选中的数据)
+    thirdId: '', // 三级分类的ID(当前选中的数据)
   }),
 
   actions: {
@@ -38,12 +43,10 @@ const useCategoryStore = defineStore('category', {
       if (res.code === 200) {
         this.thirdCategory = res.data
       }
-    }
+    },
   },
 
-  getters: {
-
-  }
+  getters: {},
 })
 
 export default useCategoryStore

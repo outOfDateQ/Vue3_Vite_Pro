@@ -2,13 +2,24 @@
   <div>
     <el-card shadow="hover">
       <!-- 添加品牌按钮 -->
-      <el-button @click="add" type="primary" size="default" icon="Plus" color="#28796B">
+      <el-button
+        @click="add"
+        type="primary"
+        size="default"
+        icon="Plus"
+        color="#28796B"
+      >
         添加品牌
       </el-button>
       <!-- table表格用于展示已有的品牌数据, data表示表格中的数据(必须是一个数组) -->
       <el-table border :data="currentTradeMark.data">
         <!-- el-table-column的label表示每一列列表的标题, prop|property表示列表每一个的数据(也可以使用插槽), type表示每一列的类型(index|selection|expand) -->
-        <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
+        <el-table-column
+          label="序号"
+          width="80px"
+          align="center"
+          type="index"
+        ></el-table-column>
         <!-- 使用prop, 是一个字符串, 就表示在table中传入的数组中每一项的一个属性, 最终是以DIV的形式展示出来的, 不灵活, 比如遇到图片就无法展示, 因此推荐使用插槽 -->
         <!-- <el-table-column label="品牌名称" prop="tmName"></el-table-column> -->
         <!-- 使用插槽 -->
@@ -24,17 +35,32 @@
             style="width: 100px; height: 100px"
             :src="row.logoUrl.includes('http://') ? row.logoUrl : `http://${row.logoUrl}`" :zoom-rate="1.2"
             :preview-src-list="srcList" :z-index="99" :initial-index="0" fit="contain" /> -->
-            <img :src="row.logoUrl.includes('http://')
-              ? row.logoUrl
-              : `http://${row.logoUrl}`
-              " class="logo-img" />
+            <img
+              :src="
+                row.logoUrl.includes('http://')
+                  ? row.logoUrl
+                  : `http://${row.logoUrl}`
+              "
+              class="logo-img"
+            />
           </template>
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #default="{ row }">
-            <el-button icon="Edit" size="small" type="primary" color="#28796B" @click="update(row)"></el-button>
-            <el-popconfirm :title="`是否删除${row.tmName}?`" width="200px" icon="Delete" icon-color="#F56C6C"
-              @confirm="handleDelete(row.id)">
+            <el-button
+              icon="Edit"
+              size="small"
+              type="primary"
+              color="#28796B"
+              @click="update(row)"
+            ></el-button>
+            <el-popconfirm
+              :title="`是否删除${row.tmName}?`"
+              width="200px"
+              icon="Delete"
+              icon-color="#F56C6C"
+              @confirm="handleDelete(row.id)"
+            >
               <template #reference>
                 <el-button icon="Delete" size="small" type="danger"></el-button>
               </template>
@@ -43,23 +69,48 @@
         </el-table-column>
       </el-table>
       <!-- 分页器 -->
-      <el-pagination @current-change="handlePageData" @size-change="handlePageSize" :pager-count="5"
-        v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3, 5, 7, 9]" :background="true"
-        layout="prev, pager, next, jumper,->, total, sizes" :total="total" />
+      <el-pagination
+        @current-change="handlePageData"
+        @size-change="handlePageSize"
+        :pager-count="5"
+        v-model:current-page="pageNum"
+        v-model:page-size="pageSize"
+        :page-sizes="[3, 5, 7, 9]"
+        :background="true"
+        layout="prev, pager, next, jumper,->, total, sizes"
+        :total="total"
+      />
     </el-card>
 
     <!-- 新增|修改的时候需要使用的对话框结构 -->
     <el-dialog v-model="dialogFormVisible" :title="title">
       <!-- 注意区分: el-table的数据是 :data, 表单的校验数据是:model, 规则是:rules -->
-      <el-form class="form" ref="uploadForm" :model="tradeMarkData" :rules="rules">
+      <el-form
+        class="form"
+        ref="uploadForm"
+        :model="tradeMarkData"
+        :rules="rules"
+      >
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
-          <el-input placeholder="请输入品牌名称" v-model="tradeMarkData.tmName"></el-input>
+          <el-input
+            placeholder="请输入品牌名称"
+            v-model="tradeMarkData.tmName"
+          ></el-input>
         </el-form-item>
         <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
           <!-- 上传图片重点!!! action表示向服务器上传一张图片, 默认是POST请求, 且需要带上代理服务器的前缀, 例如/api, 不然不走代理 -->
-          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
-            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-            <img v-if="tradeMarkData.logoUrl" :src="tradeMarkData.logoUrl" class="avatar" />
+          <el-upload
+            class="avatar-uploader"
+            action="/api/admin/product/fileUpload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+            :before-upload="beforeAvatarUpload"
+          >
+            <img
+              v-if="tradeMarkData.logoUrl"
+              :src="tradeMarkData.logoUrl"
+              class="avatar"
+            />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
             </el-icon>

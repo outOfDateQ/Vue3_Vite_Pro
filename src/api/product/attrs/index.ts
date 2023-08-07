@@ -11,14 +11,14 @@ enum API {
   // 获取分类下已有的分类属性及属性值数据
   ATTR_URL = '/admin/product/attrInfoList', // 需要一二三级分类的ID
   // 添加|修改属性
-  ADD_OR_UPDATE_ATTR_URL = '/admin/product/saveAttrInfo'
+  ADD_OR_UPDATE_ATTR_URL = '/admin/product/saveAttrInfo',
 }
 
 // 获取一级分类
 export function getFirstCategory() {
   return request<any, CategoryResponse>({
     url: API.FIRST_CATEGORY_URL,
-    method: 'GET'
+    method: 'GET',
   })
 }
 
@@ -26,7 +26,7 @@ export function getFirstCategory() {
 export function getSecondCategory(id: number | string) {
   return request<any, CategoryResponse>({
     url: `${API.SECOND_CATEGORY_URL}/${id}`,
-    method: 'GET'
+    method: 'GET',
   })
 }
 
@@ -34,7 +34,7 @@ export function getSecondCategory(id: number | string) {
 export function getThirdCategory(id: number | string) {
   return request<any, CategoryResponse>({
     url: `${API.THIRD_CATEGORY_URL}/${id}`,
-    method: 'GET'
+    method: 'GET',
   })
 }
 
@@ -42,19 +42,20 @@ export function getThirdCategory(id: number | string) {
 export function getAttrs(allIds: AllIDs) {
   return request<any, AttrsResponse>({
     url: `${API.ATTR_URL}/${allIds.firstId}/${allIds.secondId}/${allIds.thirdId}`,
-    method: 'GET'
+    method: 'GET',
   })
 }
 
 // 添加|修改属性
 export function addOrUpdateAttr(data: AttrData) {
-  if (!data.id) { // 添加属性
+  if (!data.id) {
+    // 添加属性
     return request<any, any>({
       url: API.ADD_OR_UPDATE_ATTR_URL,
       method: 'POST',
-      data
+      data,
     })
-  } else { // 修改属性
-
+  } else {
+    // 修改属性
   }
 }

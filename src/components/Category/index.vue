@@ -2,20 +2,50 @@
   <el-card class="top-card" shadow="hover">
     <el-form inline>
       <el-form-item label="一级分类">
-        <el-select :disabled="scene === 1" v-model="categoryStore.firstId" placeholder="请选择" size="default"
-          @change="handleFirstCateory">
-          <el-option v-for="item in categoryStore.firstCategory" :key="item.id" :label="item.name" :value="item.id" />
+        <el-select
+          :disabled="scene === 1"
+          v-model="categoryStore.firstId"
+          placeholder="请选择"
+          size="default"
+          @change="handleFirstCateory"
+        >
+          <el-option
+            v-for="item in categoryStore.firstCategory"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
-        <el-select :disabled="scene === 1" v-model="categoryStore.secondId" placeholder="请选择" size="default"
-          @change="handleSecondCateory">
-          <el-option v-for="item in categoryStore.secondCategory" :key="item.id" :label="item.name" :value="item.id" />
+        <el-select
+          :disabled="scene === 1"
+          v-model="categoryStore.secondId"
+          placeholder="请选择"
+          size="default"
+          @change="handleSecondCateory"
+        >
+          <el-option
+            v-for="item in categoryStore.secondCategory"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="三级分类">
-        <el-select :disabled="scene === 1" v-model="categoryStore.thirdId" placeholder="请选择" size="default">
-          <el-option v-for="item in categoryStore.thirdCategory" :key="item.id" :label="item.name" :value="item.id" />
+        <el-select
+          :disabled="scene === 1"
+          v-model="categoryStore.thirdId"
+          placeholder="请选择"
+          size="default"
+        >
+          <el-option
+            v-for="item in categoryStore.thirdCategory"
+            :key="item.id"
+            :label="item.name"
+            :value="item.id"
+          />
         </el-select>
       </el-form-item>
     </el-form>
@@ -28,8 +58,8 @@ import useCategoryStore from '@/store/category'
 
 defineProps({
   scene: {
-    type: Number
-  }
+    type: Number,
+  },
 })
 
 const categoryStore = useCategoryStore()
@@ -70,7 +100,6 @@ const handleSecondCateory = () => {
   categoryStore.thirdId = ''
   categoryStore.getThirdCategoryData()
 }
-
 </script>
 
 <style scoped lang="scss">
