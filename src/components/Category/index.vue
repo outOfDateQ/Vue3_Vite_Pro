@@ -2,50 +2,20 @@
   <el-card class="top-card" shadow="hover">
     <el-form inline>
       <el-form-item label="一级分类">
-        <el-select
-          :disabled="scene === 1"
-          v-model="categoryStore.firstId"
-          placeholder="请选择"
-          size="default"
-          @change="handleFirstCateory"
-        >
-          <el-option
-            v-for="item in categoryStore.firstCategory"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
+        <el-select :disabled="scene === 1" v-model="categoryStore.firstId" placeholder="请选择" size="default"
+          @change="handleFirstCateory">
+          <el-option v-for="item in categoryStore.firstCategory" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="二级分类">
-        <el-select
-          :disabled="scene === 1"
-          v-model="categoryStore.secondId"
-          placeholder="请选择"
-          size="default"
-          @change="handleSecondCateory"
-        >
-          <el-option
-            v-for="item in categoryStore.secondCategory"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
+        <el-select :disabled="scene === 1" v-model="categoryStore.secondId" placeholder="请选择" size="default"
+          @change="handleSecondCateory">
+          <el-option v-for="item in categoryStore.secondCategory" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="三级分类">
-        <el-select
-          :disabled="scene === 1"
-          v-model="categoryStore.thirdId"
-          placeholder="请选择"
-          size="default"
-        >
-          <el-option
-            v-for="item in categoryStore.thirdCategory"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
+        <el-select :disabled="scene === 1" v-model="categoryStore.thirdId" placeholder="请选择" size="default">
+          <el-option v-for="item in categoryStore.thirdCategory" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
     </el-form>
@@ -66,18 +36,20 @@ const categoryStore = useCategoryStore()
 
 // 当组件挂载就通知仓库获取一级分类的数据
 onMounted(() => {
-  categoryStore.firstId = ''
-  categoryStore.secondId = ''
-  categoryStore.thirdId = ''
-  categoryStore.firstCategory = []
-  categoryStore.secondCategory = []
-  categoryStore.thirdCategory = []
+  // 清空仓库的数据
+  // categoryStore.firstId = ''
+  // categoryStore.secondId = ''
+  // categoryStore.thirdId = ''
+  // categoryStore.firstCategory = []
+  // categoryStore.secondCategory = []
+  // categoryStore.thirdCategory = []
   getFirstData()
 })
 
 // 当组件销毁之前清空已经选择了的数据
 onBeforeUnmount(() => {
-  // 逻辑放在了onMounted中
+  // 调用仓库的$reset()方法可以一次性还原仓库数据, 就不用自己一个一个手动清除
+  categoryStore.$reset()
 })
 
 // 通知仓库获取一级分类的数据

@@ -45,12 +45,13 @@ export type AttrData = {
   categoryLevel: number
   attrValueList: AttrValueList[]
 }
-type AttrValueList = {
+export type AttrValueList = {
   id?: number
   createTime?: any
   updateTime?: any
   valueName: string
   attrId?: number
+  flag?: boolean
 }
 export interface AttrsResponse extends ResponseData {
   data: AttrData[]

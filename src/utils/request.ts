@@ -58,7 +58,7 @@ request.interceptors.response.use(
     ElMessage({
       type: 'error',
       message: msg,
-      showClose: true,
+      // showClose: true,
     })
 
     // 因为axios的返回结果是一个Promise对象, 所以如果失败的话需要终止Promise链

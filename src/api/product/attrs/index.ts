@@ -12,6 +12,8 @@ enum API {
   ATTR_URL = '/admin/product/attrInfoList', // 需要一二三级分类的ID
   // 添加|修改属性
   ADD_OR_UPDATE_ATTR_URL = '/admin/product/saveAttrInfo',
+  // 删除一个已有属性
+  REMOVE_ATTR_URL = '/admin/product/deleteAttr'
 }
 
 // 获取一级分类
@@ -48,14 +50,17 @@ export function getAttrs(allIds: AllIDs) {
 
 // 添加|修改属性
 export function addOrUpdateAttr(data: AttrData) {
-  if (!data.id) {
-    // 添加属性
-    return request<any, any>({
-      url: API.ADD_OR_UPDATE_ATTR_URL,
-      method: 'POST',
-      data,
-    })
-  } else {
-    // 修改属性
-  }
+  return request<any, any>({
+    url: API.ADD_OR_UPDATE_ATTR_URL,
+    method: 'POST',
+    data,
+  })
+}
+
+// 删除一个已有属性
+export function removeAttr(id: number) {
+  return request<any, any>({
+    url: `${API.REMOVE_ATTR_URL}/${id}`,
+    method: 'DELETE',
+  })
 }

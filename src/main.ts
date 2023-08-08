@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 // import { createPinia } from 'pinia'
 import App from './App.vue'
-import router from '@/router'
 import pinia from '@/store'
+import router from '@/router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 // @ts-ignore 可以忽略JSON文件没有类型限制的报错问题
@@ -31,8 +31,8 @@ const app = createApp(App)
 // app.component('SvgIcon', SvgIcon)
 
 app
-  .use(router)
   .use(pinia)
+  .use(router)
   .use(globalComponent) // 注册自定义插件
   .use(ElementPlus, {
     locale: zhCn,
