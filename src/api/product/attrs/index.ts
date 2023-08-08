@@ -13,7 +13,7 @@ enum API {
   // 添加|修改属性
   ADD_OR_UPDATE_ATTR_URL = '/admin/product/saveAttrInfo',
   // 删除一个已有属性
-  REMOVE_ATTR_URL = '/admin/product/deleteAttr'
+  REMOVE_ATTR_URL = '/admin/product/deleteAttr',
 }
 
 // 获取一级分类
